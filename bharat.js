@@ -261,26 +261,10 @@ const india = [
   let time = 0;
   let path = [];
   let drawing = [];
-  let state = -1;
+  let state = FOURIER;
+ 
   
-  function mousePressed() {
-    state = USER;
-    drawing = [];
-    x = [];
-    time = 0;
-    path = [];
-  }
-  
-  function mouseReleased() {
-    state = FOURIER;
-    const skip = 1;
-    for (let i = 0; i < drawing.length; i += skip) {
-      x.push(new Complex(drawing[i].x, drawing[i].y));
-    }
-    console.log(drawing);
-    fourierX = dft(x);
-    fourierX.sort((a, b) => b.amp - a.amp);
-  }
+
   
   function setup() {
     createCanvas(600, 620);
@@ -289,6 +273,10 @@ const india = [
     textAlign(CENTER);
     textSize(44);
     text("Happy Independance Day", width/2, height/2);
+    for(let i = 0; i < india.length; i++) {
+      let point = createVector(india[i].x - width / 2, india[i].y - height / 2);
+      drawing.push(point);
+    }
     for (let i = 0; i < drawing.length; i++) {
         x.push(new Complex(drawing[i].x, drawing[i].y));
       }
@@ -336,10 +324,7 @@ const india = [
       const dt = TWO_PI / fourierX.length;
       time += dt;
   
-      if (time > TWO_PI) {
-        state = USER;
-        drawing = [];
-        x = [];
+      if (time > TWO_PI*2) {
         time = 0;
         path = [];
       }
