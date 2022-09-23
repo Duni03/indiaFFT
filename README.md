@@ -2,6 +2,8 @@
 
 India's outline made use Fourier Seriers.
 
+Check out the page [India FFT](https://duni03.github.io/indiaFFT/).
+
 ## Inspired by
 
 Smarter Every day Video [What is a Fourier Series? (Explained by drawing circles) - Smarter Every Day 205](https://www.youtube.com/watch?v=ds0cmAV-Yek).
